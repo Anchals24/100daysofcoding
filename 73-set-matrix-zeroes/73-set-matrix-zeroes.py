@@ -14,19 +14,17 @@ class Solution:
         """
         row = False
         col = False
-        for i in range(rowl):
+        for i in range(rowl): #i=1
             if matrix[i][0] == 0:
                 col = True
-        for j in range(coll):
-            if matrix[0][j] == 0:
-                row = True
-                
-                
-        for i in range(1, rowl): #i=1
-            for j in range(1 , coll): #j = 1
-                if matrix[i][j] == 0:
-                    matrix[i][0] = 0 
-                    matrix[0][j] = 0
+            for j in range(coll): #j = 1
+                if i == 0:
+                    if matrix[0][j] == 0:
+                        row = True
+                if i != 0 and j != 0:
+                    if matrix[i][j] == 0:
+                        matrix[i][0] = 0 
+                        matrix[0][j] = 0
         for i in range(1, rowl):
             for j in range(1, coll):
                 if matrix[i][0] == 0 or matrix[0][j] == 0:
