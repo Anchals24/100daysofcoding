@@ -3,20 +3,21 @@
 class Node:
     def __init__(self, val=None, children=None):
         self.val = val
-        self.children = children #[3,2,4]
+        self.children = children
 """
-
+from collections import deque
 class Solution:
-    def helper(self, r, ans):
-        if r is None:
-            return 
-        ans.append(r.val)
-        for c in r.children:
-            self.helper(c, ans)
-            
     def preorder(self, root: 'Node') -> List[int]:
+        if root is None:
+            return 
+        Stack = deque()
+        Stack.append(root)
         ans = []
-        self.helper(root, ans)
+        while len(Stack) > 0:
+            temp = Stack.pop()
+            ans.append(temp.val)
+            for c in range(len(temp.children)-1, -1, -1):
+                if temp.children[c] != None:
+                    Stack.append( temp.children[c])
         return ans
-        
-        
+            
