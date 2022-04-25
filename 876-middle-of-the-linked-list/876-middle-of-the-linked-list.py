@@ -4,21 +4,11 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def count(self, head):
-        temp = head
-        cnt = 0
-        while temp:
-            cnt += 1
-            temp = temp.next
-        return cnt//2 
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        cntt = self.count(head)
-        temp = head
-        while cntt:
-            temp = temp.next
-            cntt -= 1
-        return temp
-            
-        
-        
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
         
