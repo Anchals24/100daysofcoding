@@ -1,37 +1,30 @@
 #User function Template for python3
 
 class Solution:
-    #Function to return max value that can be put in knapsack of capacity W.
-    #Let's try to optimize it using memoization.
     
-    def helper(self, W, wt, val, n, DP):
-        if n == 0 or W == 0:
-            return 0
-        if DP[n][W] != -1:
-            return DP[n][W]
-        if wt[n-1] <= W:
-            DP[n][W] = max(val[n-1]+ self.helper(W-wt[n-1], wt, val, n-1,DP), self.helper(W,wt,val,n-1,DP))
-            return DP[n][W]
-        elif wt[n-1] > W:
-            DP[n][W] = self.helper(W,wt,val,n-1,DP)
-            return DP[n][W]
-            
-        
-        
-        
+    #Function to return max value that can be put in knapsack of capacity W.
     def knapSack(self,W, wt, val, n):
-        # code here
-        #In prev recursive code, we noticed W and n were changing. 
-        #Let's take a matrix for the same. 
-        #taking n+1 rows and W+1 columns to prevent calling the recursive function over and over again.
-        
+        #taking a matrix of W+1 columns and n+1 rows.
         DP = []
         for row in range(n+1):
             for column in range(W+1):
                 columns = [-1] * (W+1)
                 DP.append(columns)
+                
+        #Initialization(equivalent to the recursive code )
+        for i in range(n+1):
+            for j in range(W+1):
+                if i == 0 or j == 0:
+                    DP[i][j] = 0
+        #filling the remaining ones.
+        for i in range(1, n+1):
+            for j in range(1, W+1):
+                if wt[i-1] <= j:
+                    DP[i][j] = max(val[i-1]+DP[i-1][j-wt[i-1]], DP[i-1][j])
+                else:
+                    DP[i][j] = DP[i-1][j]
+        return DP[n][W]
         
-        return self.helper(W, wt, val, n, DP)
 
 #{ 
 #  Driver Code Starts
