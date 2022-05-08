@@ -2,7 +2,7 @@
 class Solution:
 	def perfectSum(self, arr, n, sum):
 		# code here
-		DP = [[0] * (sum+1) for row in range(n+1)]
+		DP = [[-1] * (sum+1) for row in range(n+1)]
 	    for j in range(sum+1): 
             DP[0][j] = 0
         DP[0][0] = 1
