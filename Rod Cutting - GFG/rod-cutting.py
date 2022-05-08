@@ -11,9 +11,8 @@ class Solution:
         """
         DP = []
         for rows in range(N+1):
-            for columns in range(n+1):
-                column = [-1] * (n+1)
-                DP.append(column)
+            column = [-1] * (n+1)
+            DP.append(column)
         
         #initialization 
         for i in range(N+1):
