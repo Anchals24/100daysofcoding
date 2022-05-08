@@ -7,9 +7,8 @@ class Solution:
         #taking a matrix of W+1 columns and n+1 rows.
         DP = []
         for row in range(n+1):
-            for column in range(W+1):
-                columns = [-1] * (W+1)
-                DP.append(columns)
+            columns = [-1] * (W+1)
+            DP.append(columns)
                 
         #Initialization(equivalent to the recursive code )
         for i in range(n+1):
