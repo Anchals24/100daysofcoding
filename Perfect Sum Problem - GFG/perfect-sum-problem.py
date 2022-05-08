@@ -5,9 +5,7 @@ class Solution:
 		#DP = [[-1] * (sum+1) for row in range(n+1)]
 		DP = []
 		for row in range(n+1):
-		    column = []
-		    for c in range(sum+1):
-		        column.append(-1)
+		    column = [-1] * (sum+1)
 		    DP.append(column)
 		    
 	    for j in range(sum+1): 
