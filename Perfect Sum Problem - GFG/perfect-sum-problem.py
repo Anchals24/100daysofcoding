@@ -2,7 +2,7 @@
 class Solution:
 	def perfectSum(self, arr, n, sum):
 		# code here
-		DP = [[0] * (sum+1) for _ in range(n+1)]
+		DP = [[0] * (sum+1) for row in range(n+1)]
 	    for j in range(sum+1): 
             DP[0][j] = 0
         DP[0][0] = 1
@@ -14,6 +14,14 @@ class Solution:
 	               DP[i][j] = DP[i-1][j-arr[i-1]] + DP[i-1][j]
 	    ans = DP[n][sum]
 	    return ans % 1000000007
+	    
+	    """
+	    DP = []
+        for row in range(n+1):
+        for columns in range(sum+1):
+        column = [-1] * (sum+1) #[-1, -1, -1, -1, -1, -1]
+        DP.append(column)
+	    """
 	                
 
 #{ 
