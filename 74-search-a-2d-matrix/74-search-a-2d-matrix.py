@@ -3,8 +3,8 @@ class Solution:
         row = len(matrix) #3
         col = len(matrix[0])-1 #3
         r = 0
-        while (r < row and col >= 0): #(1 < 3, 2 >= 0)
-            if matrix[r][col] == target: #m[1][2]
+        while (r < row and col >= 0): 
+            if matrix[r][col] == target:
                 return True
             elif matrix[r][col] > target: #m[1][3]
                 col -= 1 #1
