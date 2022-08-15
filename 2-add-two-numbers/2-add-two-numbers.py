@@ -4,25 +4,21 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def insertnodes(self, head, newnode):
+    def insertnodes(self, head, tail, newnode):
         if head == None:
             head = newnode
+            tail = newnode
         else:
-            temp = head
-            while temp.next:
-                temp = temp.next
-            temp.next = newnode    
-        return head
+            tail.next = newnode
+            tail = tail.next   
+        return [head, tail]
     
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         temp1 = l1
         temp2 = l2
         head = None
-        tail = None
+        tail = ListNode(-1)
         carry = 0
-        #229
-        #192
-        #3121
         while temp1 or temp2:
             if temp1 != None and temp2 != None:
                 summ = temp1.val + temp2.val + carry #summ = 2 + 9+ 1
@@ -55,10 +51,11 @@ class Solution:
                     newnode = ListNode(summ) #3
                     carry = 0 
                 temp2= temp2.next
-            head = self.insertnodes(head, newnode)   
+            head = self.insertnodes(head,tail, newnode)[0]   
+            tail = self.insertnodes(head,tail, newnode)[1]   
         if carry != 0:
             newnode = ListNode(carry)
-            self.insertnodes(head, newnode)
+            self.insertnodes(head,tail, newnode)
         return head
             
             
