@@ -5,17 +5,35 @@
 #         self.next = None
 
 class Solution:
+    def llength(self, head):
+        cnt = 0
+        temp = head
+        while temp:
+            cnt += 1
+            temp = temp.next
+        return cnt
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        D = {}
+        cntA = self.llength(headA)
+        cntB = self.llength(headB)
         temp1 = headA
-        while temp1:
-            D[temp1] = None
-            temp1 = temp1.next
         temp2 = headB
-        while temp2:
-            if temp2 in D:
-                return temp2
-            temp2 = temp2.next
+        if cntA > cntB:
+            diff = abs(cntA- cntB)
+            while diff:
+                temp1 = temp1.next
+                diff -= 1
+        elif cntA < cntB:
+            diff = cntB - cntA
+            while diff:
+                temp2 = temp2.next
+                diff -= 1
+        while temp1:
+                if temp1 == temp2:
+                    return temp1
+                temp1 = temp1.next
+                temp2 = temp2.next
         return None
+                
+            
         
         
