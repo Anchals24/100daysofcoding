@@ -1,5 +1,4 @@
 class Solution:
-    
     def issafe(self, row, col, board, value):
         for i in range(9):
             if board[row][i] == value:
@@ -20,7 +19,6 @@ class Solution:
                             board[i][j] = str(k)
                             aagey = self.solve(board)
                             if aagey:
-                                print(board)
                                 return True
                             else:
                                 board[i][j] = "."
